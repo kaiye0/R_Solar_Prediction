@@ -1,2 +1,11 @@
 # R_Solar_Prediction
-The project aims to build a model to predict the radiation using weather data such as wind speed, temperature and so on.
+Developing renewable energy has raised more and more public awareness since the situation of global warming is getting worse while the industrial demand for energy is still increasing. One of the biggest obstacles in the effective utilization of renewable energy is the uncontrollability of renewable energy resources like solar energy. Solar energy is commonly used due to its abundance and easy accessibility. However, the utilization of solar energy completely depends on the radiation from the sun thus it’s impossible to manually control the energy output like traditional power generation methods. Therefore, it would be useful to predict the radiation in a certain area and time by analyzing previous data.
+
+I used a data set named “Solar Radiation Prediction” from Kaggle and tried to build a model to predict the radiation using weather data such as wind speed, temperature and so on.
+Ref:https://www.kaggle.com/dronio/SolarEnergy
+
+The data set is given with the radiation of an unknown area in four months (September to December in 2016) with several other parameters about weather conditions: temperature, pressure, humidity, wind speed and direction, sunrise time, and sunset time.
+
+From the data of December 2016, the daytime is shorter than night-time thus the area is at the North Hemisphere. And the day time on September 1st is around 12.5 hours, which is the same as the daytime at Lahaina in Hawaii based on my search. Thus the place is located at around the same latitude as Lahaina, that is, 20.88° N.
+
+The data are recorded at a certain time respectively. Therefore, I used the ‘Chron’ library in R to process times and dates. I transformed these times and dates to the fractions of a day or year, which is more meaningful for the prediction of solar radiation. And I added another column showing the length of daytime by taking the difference of sunset and sunrise time. I think it would be more straightforward and useful than a specific sunrise or sunset time. For the requirement of linear independence, only sunrise time and the daytime length is used in my modeling. What’s more, I added another tag to tell if the data is recorded during day time since there is no direct sunshine during night-time and the radiation is close to zero.
